@@ -1,4 +1,4 @@
-const C="pontea-v4";
+const C="pontea-v5";
 const A=["./","./index.html","./HSK1-Flashcards.html","./HSK1-Living-Room.html","./HanGo-Scenes.html","./HanGo-Culture.html","./HanGo-Dashboard.html","./manifest.json","./icon-192.png","./icon-512.png"];
 self.addEventListener("install",function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(A);}).then(function(){return self.skipWaiting();}));});
 self.addEventListener("activate",function(e){e.waitUntil(caches.keys().then(function(ks){return Promise.all(ks.filter(function(k){return k!==C;}).map(function(k){return caches.delete(k);}));}).then(function(){return self.clients.claim();}));});
